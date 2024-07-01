@@ -1,0 +1,32 @@
+error: regex parse error:
+           [a-z+
+           ^
+       error: unclosed character class
+ --> tests/ui/bad_regex.rs:7:13
+  |
+7 |             "[a-z+"
+  |             ^^^^^^^
+
+error: Empty regex is not supported
+  --> tests/ui/bad_regex.rs:15:13
+   |
+15 |             ""
+   |             ^^
+
+error: expected string literal
+  --> tests/ui/bad_regex.rs:23:13
+   |
+23 |             123
+   |             ^^^
+
+error: unexpected end of input, expected string literal
+  --> tests/ui/bad_regex.rs:31:9
+   |
+31 |         },
+   |         ^
+
+error: Unknown word: regex
+  --> tests/ui/bad_regex.rs:37:9
+   |
+37 |         regex,
+   |         ^^^^^

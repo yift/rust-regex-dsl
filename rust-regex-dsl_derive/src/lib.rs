@@ -4,6 +4,9 @@ use proc_macro::TokenStream;
 use syn::{parse_macro_input, punctuated::Punctuated, LitStr};
 mod dsl;
 mod error_factory;
+mod functions;
+mod group;
+mod ident_parser;
 
 #[proc_macro]
 pub fn regex(input: TokenStream) -> TokenStream {

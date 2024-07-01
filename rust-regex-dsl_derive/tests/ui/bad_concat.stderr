@@ -1,0 +1,26 @@
+error: Unknown word: concat
+ --> tests/ui/bad_concat.rs:5:9
+  |
+5 |         concat,
+  |         ^^^^^^
+
+error: unexpected end of input, Concat must have at least two elements
+ --> tests/ui/bad_concat.rs:8:16
+  |
+8 |         concat(),
+  |                ^
+
+error: unexpected end of input, Concat must have at least two elements
+  --> tests/ui/bad_concat.rs:11:21
+   |
+11 |         concat("one"),
+   |                     ^
+
+error: regex parse error:
+           [
+           ^
+       error: unclosed character class
+  --> tests/ui/bad_concat.rs:14:22
+   |
+14 |         concat(regex("["), "two"),
+   |                      ^^^

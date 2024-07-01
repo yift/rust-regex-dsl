@@ -3,12 +3,12 @@ use quote::quote;
 use regex::Regex;
 use syn::{
     parse::{Parse, ParseStream},
-    Error, LitChar, LitStr,
+    Error, Ident, LitChar, LitStr,
 };
 
-use crate::error_factory::ErrorFactory;
+use crate::{error_factory::ErrorFactory, ident_parser::parse_ident};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Dsl {
     regex: String,
 }
@@ -20,7 +20,7 @@ impl Dsl {
         }
     }
 
-    fn eq(string: &str) -> Self {
+    pub fn eq(string: &str) -> Self {
         let regex: String = string
             .chars()
             .map(|c| match c {
@@ -33,17 +33,22 @@ impl Dsl {
             .collect();
         Dsl { regex }
     }
-
-    pub fn build(&self, error_factory: ErrorFactory) -> TokenStream {
+    pub fn validate(&self) -> Option<String> {
         if self.regex.is_empty() {
-            return error_factory.error("Empty regex is not supported".to_string());
+            return Some("Empty regex is not supported".to_string());
         }
         if let Err(e) = Regex::new(self.regex.as_str()) {
-            return error_factory.error(format!("{}", e));
+            return Some(format!("{}", e));
+        }
+        None
+    }
+
+    pub fn build(&self, error_factory: ErrorFactory) -> TokenStream {
+        if let Some(err) = self.validate() {
+            return error_factory.error(err);
         }
 
         let lit = Literal::string(self.regex.as_str());
-
         quote! {
             rust_regex_dsl::Regex::new(#lit).unwrap()
         }
@@ -69,6 +74,8 @@ impl Parse for Dsl {
             let chr: LitChar = input.parse()?;
             let str = format!("{}", chr.value());
             Ok(Dsl::eq(&str))
+        } else if lookahead.peek(Ident) {
+            parse_ident(input)
         } else {
             Err(lookahead.error())
         }

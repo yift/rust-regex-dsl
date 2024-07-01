@@ -59,3 +59,14 @@ fn test_eq_with_quote() {
     assert!(regex.is_match("\"test\""));
     assert!(!regex.is_match("test"));
 }
+
+#[test]
+fn explicit_eq() {
+    let regex = regex_dsl! {
+        "Hello",
+        eq("World")
+    };
+    assert!(regex.is_match("HelloWorld"));
+    assert!(!regex.is_match("Hello"));
+    assert!(!regex.is_match("World"));
+}

@@ -1,0 +1,5 @@
+error: Unknown word: nop
+ --> tests/ui/bad_word.rs:5:9
+  |
+5 |         nop
+  |         ^^^
