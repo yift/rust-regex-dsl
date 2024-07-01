@@ -1,7 +1,7 @@
 pub use rust_regex_dsl::regex_dsl;
 
 #[test]
-fn string_default_to_equals() {
+fn test_eq() {
     let regex = regex_dsl! {
         "test"
     };
@@ -39,4 +39,23 @@ fn two_with_chars() {
     };
     assert!(regex.is_match("test"));
     assert!(!regex.is_match("t"));
+}
+
+#[test]
+fn test_eq_with_nl() {
+    let regex = regex_dsl! {
+        "hello\nworld"
+    };
+    assert!(regex.is_match("hello\nworld"));
+    assert!(!regex.is_match("test world"));
+}
+
+#[test]
+fn test_eq_with_quote() {
+    let regex = regex_dsl! {
+        "\"test\""
+    };
+
+    assert!(regex.is_match("\"test\""));
+    assert!(!regex.is_match("test"));
 }
