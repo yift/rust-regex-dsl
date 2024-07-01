@@ -5,7 +5,7 @@ use syn::{
 
 use crate::{
     dsl::Dsl,
-    functions::{concat::parse_concat, eq::parse_eq, regex::parse_regex},
+    functions::{any::parse_any, concat::parse_concat, eq::parse_eq, regex::parse_regex},
     group::parse_group,
 };
 
@@ -23,6 +23,7 @@ fn parse_function(ident: Ident, group: &ParseBuffer) -> Result<Dsl> {
         "regex" => parse_regex(group),
         "eq" => parse_eq(group),
         "concat" => parse_concat(group),
+        "any" => parse_any(group),
         unknown_function => Err(Error::new(
             ident.span(),
             format!("Unknown function: {}", unknown_function),
@@ -52,5 +53,5 @@ fn parse_single_word(ident: Ident) -> Result<Dsl> {
             ))
         }
     };
-    Ok(Dsl::new(regex))
+    Ok(Dsl::new(regex, false))
 }

@@ -11,16 +11,19 @@ use crate::{error_factory::ErrorFactory, ident_parser::parse_ident};
 #[derive(Debug, Clone)]
 pub struct Dsl {
     regex: String,
+    need_group: bool,
 }
 
 impl Dsl {
-    pub fn new(regex: &str) -> Self {
+    pub fn new(regex: &str, need_group: bool) -> Self {
         Dsl {
             regex: regex.into(),
+            need_group,
         }
     }
 
     pub fn eq(string: &str) -> Self {
+        let need_group = string.len() > 1;
         let regex: String = string
             .chars()
             .map(|c| match c {
@@ -31,7 +34,8 @@ impl Dsl {
                 _ => format!("{}", c),
             })
             .collect();
-        Dsl { regex }
+
+        Dsl::new(&regex, need_group)
     }
     pub fn validate(&self) -> Option<String> {
         if self.regex.is_empty() {
@@ -55,8 +59,21 @@ impl Dsl {
     }
 
     pub fn concat(dsls: &[&Dsl]) -> Self {
+        let need_group = match dsls.len() {
+            0 => false,
+            1 => dsls[0].need_group,
+            _ => true,
+        };
         let regex: String = dsls.iter().map(|dsl| dsl.regex.as_str()).collect();
-        Dsl { regex }
+        Dsl::new(&regex, need_group)
+    }
+
+    pub fn non_capturing_group_if_needed(&self) -> String {
+        if !self.need_group {
+            self.regex.clone()
+        } else {
+            format!("(?:{})", self.regex)
+        }
     }
 }
 

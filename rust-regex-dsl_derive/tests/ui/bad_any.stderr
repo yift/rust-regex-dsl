@@ -1,0 +1,26 @@
+error: Unknown word: any
+ --> tests/ui/bad_any.rs:5:9
+  |
+5 |         any,
+  |         ^^^
+
+error: unexpected end of input, Concat must have at least two elements
+ --> tests/ui/bad_any.rs:8:13
+  |
+8 |         any(),
+  |             ^
+
+error: unexpected end of input, Concat must have at least two elements
+  --> tests/ui/bad_any.rs:11:18
+   |
+11 |         any("one"),
+   |                  ^
+
+error: regex parse error:
+           [
+           ^
+       error: unclosed character class
+  --> tests/ui/bad_any.rs:14:19
+   |
+14 |         any(regex("["), "two"),
+   |                   ^^^

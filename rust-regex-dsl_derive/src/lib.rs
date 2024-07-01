@@ -11,9 +11,8 @@ mod ident_parser;
 #[proc_macro]
 pub fn regex(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as LitStr);
-    let regex = input.value();
 
-    let dsl = Dsl::new(regex.as_str());
+    let dsl = Dsl::new(&input.value(), input.value().len() > 1);
     let error_factory = ErrorFactory::new_obj(input.span());
     dsl.build(error_factory).into()
 }
