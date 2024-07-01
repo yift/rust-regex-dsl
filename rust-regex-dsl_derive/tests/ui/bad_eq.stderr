@@ -1,0 +1,25 @@
+error: Empty string is not supported
+ --> tests/ui/bad_eq.rs:4:28
+  |
+4 |     let regex = regex_dsl!("");
+  |                            ^^
+
+error: Empty regex is not supported
+ --> tests/ui/bad_eq.rs:6:17
+  |
+6 |     let regex = regex_dsl!();
+  |                 ^^^^^^^^^^^^
+  |
+  = note: this error originates in the macro `regex_dsl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: expected string literal
+ --> tests/ui/bad_eq.rs:8:28
+  |
+8 |     let regex = regex_dsl!(122);
+  |                            ^^^
+
+error: expected string literal
+  --> tests/ui/bad_eq.rs:10:43
+   |
+10 |     let regex = regex_dsl!("test", "nop", 123);
+   |                                           ^^^
