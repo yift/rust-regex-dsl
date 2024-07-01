@@ -28,3 +28,15 @@ fn two_with_escape() {
     assert!(regex.is_match("test.me\\"));
     assert!(!regex.is_match("test-me\n"));
 }
+
+#[test]
+fn two_with_chars() {
+    let regex = regex_dsl! {
+        't',
+        'e',
+        's',
+        't'
+    };
+    assert!(regex.is_match("test"));
+    assert!(!regex.is_match("t"));
+}

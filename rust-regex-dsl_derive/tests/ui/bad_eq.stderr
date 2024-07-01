@@ -12,13 +12,13 @@ error: Empty regex is not supported
   |
   = note: this error originates in the macro `regex_dsl` (in Nightly builds, run with -Z macro-backtrace for more info)
 
-error: expected string literal
+error: expected string literal or character literal
  --> tests/ui/bad_eq.rs:8:28
   |
 8 |     let regex = regex_dsl!(122);
   |                            ^^^
 
-error: expected string literal
+error: expected string literal or character literal
   --> tests/ui/bad_eq.rs:10:43
    |
 10 |     let regex = regex_dsl!("test", "nop", 123);

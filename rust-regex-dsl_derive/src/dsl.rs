@@ -3,7 +3,7 @@ use quote::quote;
 use regex::Regex;
 use syn::{
     parse::{Parse, ParseStream},
-    Error, LitStr,
+    Error, LitChar, LitStr,
 };
 
 use crate::error_factory::ErrorFactory;
@@ -65,6 +65,10 @@ impl Parse for Dsl {
             } else {
                 Ok(Dsl::eq(&str.value()))
             }
+        } else if lookahead.peek(LitChar) {
+            let chr: LitChar = input.parse()?;
+            let str = format!("{}", chr.value());
+            Ok(Dsl::eq(&str))
         } else {
             Err(lookahead.error())
         }
