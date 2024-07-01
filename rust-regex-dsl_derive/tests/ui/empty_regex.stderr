@@ -1,0 +1,5 @@
+error: Empty regex is not supported
+ --> tests/ui/empty_regex.rs:4:24
+  |
+4 |     let regex = regex!("");
+  |                        ^^

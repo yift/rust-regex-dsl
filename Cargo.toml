@@ -4,3 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+lazy_static = "1.5"
+regex = "1.10"
+rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive"}

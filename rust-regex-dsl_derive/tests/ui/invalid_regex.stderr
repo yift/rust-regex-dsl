@@ -1,0 +1,8 @@
+error: regex parse error:
+           (
+           ^
+       error: unclosed group
+ --> tests/ui/invalid_regex.rs:4:24
+  |
+4 |     let regex = regex!("(");
+  |                        ^^^

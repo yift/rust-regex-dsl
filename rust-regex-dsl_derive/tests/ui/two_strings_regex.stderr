@@ -1,0 +1,5 @@
+error: unexpected token
+ --> tests/ui/two_strings_regex.rs:4:31
+  |
+4 |     let regex = regex!("hello", "world");
+  |                               ^

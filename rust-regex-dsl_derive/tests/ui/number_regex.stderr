@@ -1,0 +1,5 @@
+error: expected string literal
+ --> tests/ui/number_regex.rs:4:24
+  |
+4 |     let regex = regex!(122);
+  |                        ^^^

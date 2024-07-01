@@ -1,0 +1,7 @@
+error: unexpected end of input, expected string literal
+ --> tests/ui/no_args_regex.rs:4:17
+  |
+4 |     let regex = regex!();
+  |                 ^^^^^^^^
+  |
+  = note: this error originates in the macro `regex` (in Nightly builds, run with -Z macro-backtrace for more info)
