@@ -3,10 +3,12 @@ use quote::quote;
 use regex::Regex;
 use syn::{
     parse::{Parse, ParseStream},
-    Error, Ident, LitChar, LitStr,
+    Error, Ident, LitChar, LitStr, Token,
 };
 
-use crate::{error_factory::ErrorFactory, ident_parser::parse_ident};
+use crate::{
+    error_factory::ErrorFactory, ident_parser::parse_ident, predefined_class::PredefineClass,
+};
 
 #[derive(Debug, Clone)]
 pub struct Dsl {
@@ -93,6 +95,9 @@ impl Parse for Dsl {
             Ok(Dsl::eq(&str))
         } else if lookahead.peek(Ident) {
             parse_ident(input)
+        } else if lookahead.peek(Token![#]) || lookahead.peek(Token![~]) {
+            let cls: PredefineClass = input.parse()?;
+            Ok(cls.to_dsl())
         } else {
             Err(lookahead.error())
         }

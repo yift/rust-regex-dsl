@@ -1,0 +1,17 @@
+error: Unknown regex class english
+ --> tests/ui/bad_predefine_class.rs:5:10
+  |
+5 |         #english
+  |          ^^^^^^^
+
+error: Unknown regex class english
+  --> tests/ui/bad_predefine_class.rs:10:10
+   |
+10 |         ~english
+   |          ^^^^^^^
+
+error: expected one of: string literal, character literal, identifier, `#`, `~`
+  --> tests/ui/bad_predefine_class.rs:15:9
+   |
+15 |         -latin
+   |         ^

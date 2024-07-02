@@ -7,6 +7,7 @@ mod error_factory;
 mod functions;
 mod group;
 mod ident_parser;
+mod predefined_class;
 
 #[proc_macro]
 pub fn regex(input: TokenStream) -> TokenStream {
