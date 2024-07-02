@@ -1,0 +1,29 @@
+error: Unknown word: group
+ --> tests/ui/bad_groups.rs:5:9
+  |
+5 |         group
+  |         ^^^^^
+
+error: unexpected end of input, Nothing to capture in the group
+  --> tests/ui/bad_groups.rs:11:9
+   |
+11 |         }
+   |         ^
+
+error: Unknown word: nameo
+  --> tests/ui/bad_groups.rs:16:13
+   |
+16 |             nameo,
+   |             ^^^^^
+
+error: expected `:`
+  --> tests/ui/bad_groups.rs:23:17
+   |
+23 |             name, "terst",
+   |                 ^
+
+error: expected identifier
+  --> tests/ui/bad_groups.rs:30:19
+   |
+30 |             name: "terst",
+   |                   ^^^^^^^

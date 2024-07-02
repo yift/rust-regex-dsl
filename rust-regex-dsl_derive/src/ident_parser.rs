@@ -6,8 +6,8 @@ use syn::{
 use crate::{
     dsl::Dsl,
     functions::{
-        any::parse_any, any_of::parse_any_of, concat::parse_concat, eq::parse_eq,
-        regex::parse_regex,
+        any::parse_any, any_of::parse_any_of, capture_group::parse_capture_group,
+        concat::parse_concat, eq::parse_eq, regex::parse_regex,
     },
     group::parse_group,
 };
@@ -29,6 +29,7 @@ fn parse_function(ident: Ident, group: &ParseBuffer) -> Result<Dsl> {
         "any" => parse_any(group),
         "any_of" => parse_any_of(group, true),
         "not_any_of" => parse_any_of(group, false),
+        "group" => parse_capture_group(group),
         unknown_function => Err(Error::new(
             ident.span(),
             format!("Unknown function: {}", unknown_function),

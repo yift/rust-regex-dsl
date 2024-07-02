@@ -77,6 +77,13 @@ impl Dsl {
             format!("(?:{})", self.regex)
         }
     }
+    pub fn group(&self, name_prefix: &str) -> Self {
+        let regex = format!("({}{})", name_prefix, self.regex);
+        Self {
+            regex,
+            need_group: false,
+        }
+    }
 }
 
 impl Parse for Dsl {
