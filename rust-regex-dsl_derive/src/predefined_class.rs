@@ -6,7 +6,7 @@ use syn::{Error, Ident, Result, Token};
 use crate::dsl::Dsl;
 
 pub struct PredefineClass {
-    regex: String,
+    pub regex: String,
 }
 
 impl PredefineClass {

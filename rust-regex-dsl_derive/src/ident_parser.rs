@@ -5,7 +5,10 @@ use syn::{
 
 use crate::{
     dsl::Dsl,
-    functions::{any::parse_any, concat::parse_concat, eq::parse_eq, regex::parse_regex},
+    functions::{
+        any::parse_any, any_of::parse_any_of, concat::parse_concat, eq::parse_eq,
+        regex::parse_regex,
+    },
     group::parse_group,
 };
 
@@ -24,13 +27,15 @@ fn parse_function(ident: Ident, group: &ParseBuffer) -> Result<Dsl> {
         "eq" => parse_eq(group),
         "concat" => parse_concat(group),
         "any" => parse_any(group),
+        "any_of" => parse_any_of(group, true),
+        "not_any_of" => parse_any_of(group, false),
         unknown_function => Err(Error::new(
             ident.span(),
             format!("Unknown function: {}", unknown_function),
         )),
     }
 }
-fn parse_single_word(ident: Ident) -> Result<Dsl> {
+pub fn parse_single_word(ident: Ident) -> Result<Dsl> {
     let regex = match ident.to_string().as_str() {
         "any_character" => ".",
         "digit" => "\\d",
