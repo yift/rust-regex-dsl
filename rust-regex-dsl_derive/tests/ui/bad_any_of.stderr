@@ -57,3 +57,15 @@ error: expected character literal
    |
 54 |             from: 1 to: 'a'
    |                   ^
+
+error: Missing content
+  --> tests/ui/bad_any_of.rs:62:17
+   |
+62 |             xor "aa"
+   |                 ^^^^
+
+error: expected one of: string literal, character literal, `#`, `~`, identifier
+  --> tests/ui/bad_any_of.rs:69:17
+   |
+69 |             xor(5)
+   |                 ^

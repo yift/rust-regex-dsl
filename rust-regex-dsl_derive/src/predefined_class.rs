@@ -5,6 +5,7 @@ use syn::{Error, Ident, Result, Token};
 
 use crate::dsl::Dsl;
 
+#[derive(Debug)]
 pub struct PredefineClass {
     pub regex: String,
 }

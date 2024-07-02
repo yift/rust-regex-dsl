@@ -138,3 +138,64 @@ fn test_any_of_range_with_comma() {
     assert!(regex.is_match("6"));
     assert!(!regex.is_match("7"));
 }
+#[test]
+fn test_any_of_intersect() {
+    let regex = regex_dsl! {
+        any_of {
+            from: '0' to: '4',
+            intersect(
+                from: '2' to: '6',
+            )
+        }
+    };
+
+    assert!(regex.is_match("2"));
+    assert!(regex.is_match("3"));
+    assert!(regex.is_match("4"));
+    assert!(!regex.is_match("1"));
+    assert!(!regex.is_match("5"));
+    assert!(!regex.is_match("0"));
+    assert!(!regex.is_match("6"));
+}
+
+#[test]
+fn test_any_of_subtract() {
+    let regex = regex_dsl! {
+        any_of {
+            from: '0' to: '6',
+            subtract(
+                "125"
+            )
+        }
+    };
+
+    assert!(regex.is_match("0"));
+    assert!(regex.is_match("3"));
+    assert!(regex.is_match("4"));
+    assert!(regex.is_match("6"));
+    assert!(!regex.is_match("1"));
+    assert!(!regex.is_match("2"));
+    assert!(!regex.is_match("5"));
+}
+#[test]
+fn test_any_of_xor() {
+    let regex = regex_dsl! {
+        any_of {
+            from: '0' to: '6',
+            xor(
+                from: '3' to: '9'
+            )
+        }
+    };
+
+    assert!(regex.is_match("0"));
+    assert!(regex.is_match("1"));
+    assert!(regex.is_match("2"));
+    assert!(!regex.is_match("3"));
+    assert!(!regex.is_match("4"));
+    assert!(!regex.is_match("5"));
+    assert!(!regex.is_match("6"));
+    assert!(regex.is_match("7"));
+    assert!(regex.is_match("8"));
+    assert!(regex.is_match("9"));
+}

@@ -55,4 +55,19 @@ fn main() {
         },
     };
     println!("{}", regex);
+
+    let regex = regex_dsl! {
+        any_of {
+            from: '0' to: '6',
+            xor "aa"
+        }
+    };
+    println!("{}", regex);
+    let regex = regex_dsl! {
+        any_of {
+            from: '0' to: '6',
+            xor(5)
+        }
+    };
+    println!("{}", regex);
 }
