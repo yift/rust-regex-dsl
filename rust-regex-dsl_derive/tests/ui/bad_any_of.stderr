@@ -1,0 +1,59 @@
+error: Unknown word: any_of
+ --> tests/ui/bad_any_of.rs:5:9
+  |
+5 |         any_of,
+  |         ^^^^^^
+
+error: unexpected end of input, Empty class is not supported
+ --> tests/ui/bad_any_of.rs:9:16
+  |
+9 |         any_of(),
+  |                ^
+
+error: Empty string is not supported
+  --> tests/ui/bad_any_of.rs:13:16
+   |
+13 |         any_of(""),
+   |                ^^
+
+error: Unknown word: not_a_word
+  --> tests/ui/bad_any_of.rs:18:13
+   |
+18 |             not_a_word
+   |             ^^^^^^^^^^
+
+error: Unknown regex class not_a_class
+  --> tests/ui/bad_any_of.rs:24:14
+   |
+24 |             #not_a_class
+   |              ^^^^^^^^^^^
+
+error: expected `:`
+  --> tests/ui/bad_any_of.rs:30:17
+   |
+30 |             from, 'a'
+   |                 ^
+
+error: Expecting to
+  --> tests/ui/bad_any_of.rs:36:23
+   |
+36 |             from: 'a' tof: 'b'
+   |                       ^^^
+
+error: expected `:`
+  --> tests/ui/bad_any_of.rs:42:25
+   |
+42 |             from: 'a' to, 'b'
+   |                         ^
+
+error: expected character literal
+  --> tests/ui/bad_any_of.rs:48:27
+   |
+48 |             from: 'a' to: 1
+   |                           ^
+
+error: expected character literal
+  --> tests/ui/bad_any_of.rs:54:19
+   |
+54 |             from: 1 to: 'a'
+   |                   ^

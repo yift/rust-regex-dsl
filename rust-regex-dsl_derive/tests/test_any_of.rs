@@ -99,3 +99,42 @@ fn test_not_any_of_string() {
     assert!(!regex.is_match("d"));
     assert!(regex.is_match("e"));
 }
+#[test]
+fn test_any_of_range() {
+    let regex = regex_dsl! {
+        any_of {
+            "abcd",
+            from: '2' to: '6'
+        }
+    };
+    assert!(regex.is_match("a"));
+    assert!(regex.is_match("b"));
+    assert!(regex.is_match("c"));
+    assert!(regex.is_match("d"));
+    assert!(!regex.is_match("e"));
+    assert!(!regex.is_match("1"));
+    assert!(regex.is_match("2"));
+    assert!(regex.is_match("3"));
+    assert!(regex.is_match("6"));
+    assert!(!regex.is_match("7"));
+}
+#[test]
+fn test_any_of_range_with_comma() {
+    let regex = regex_dsl! {
+        any_of {
+            "abcd",
+            from: '2', to: '6',
+        }
+    };
+
+    assert!(regex.is_match("a"));
+    assert!(regex.is_match("b"));
+    assert!(regex.is_match("c"));
+    assert!(regex.is_match("d"));
+    assert!(!regex.is_match("e"));
+    assert!(!regex.is_match("1"));
+    assert!(regex.is_match("2"));
+    assert!(regex.is_match("3"));
+    assert!(regex.is_match("6"));
+    assert!(!regex.is_match("7"));
+}
