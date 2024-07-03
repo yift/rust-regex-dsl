@@ -1,0 +1,35 @@
+error: Unknown word: maybe
+ --> tests/ui/bad_repeate.rs:6:9
+  |
+6 |         maybe,
+  |         ^^^^^
+
+error: expected one of: string literal, character literal, identifier, `#`, `~`
+  --> tests/ui/bad_repeate.rs:13:13
+   |
+13 |             12
+   |             ^^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_repeate.rs:21:23
+   |
+21 |             lazy, lazy,
+   |                       ^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_repeate.rs:30:25
+   |
+30 |             lazy, greedy,
+   |                         ^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_repeate.rs:40:13
+   |
+40 |             "test"
+   |             ^^^^^^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_repeate.rs:49:13
+   |
+49 |             "test"
+   |             ^^^^^^
