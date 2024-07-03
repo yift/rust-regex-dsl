@@ -66,7 +66,10 @@ impl Dsl {
             1 => dsls[0].need_group,
             _ => true,
         };
-        let regex: String = dsls.iter().map(|dsl| dsl.regex.as_str()).collect();
+        let regex: String = dsls
+            .iter()
+            .map(|dsl| dsl.non_capturing_group_if_needed())
+            .collect();
         Dsl::new(&regex, need_group)
     }
 
