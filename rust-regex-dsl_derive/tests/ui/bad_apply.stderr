@@ -1,0 +1,47 @@
+error: Unknown word: apply
+ --> tests/ui/bad_apply.rs:5:9
+  |
+5 |         apply,
+  |         ^^^^^
+
+error: unexpected end of input, No flags to apply
+ --> tests/ui/bad_apply.rs:8:15
+  |
+8 |         apply(),
+  |               ^
+
+error: unexpected end of input, No flags to apply
+  --> tests/ui/bad_apply.rs:11:20
+   |
+11 |         apply("one"),
+   |                    ^
+
+error: Unknown word: case_insensitive
+  --> tests/ui/bad_apply.rs:14:15
+   |
+14 |         apply(case_insensitive, "one"),
+   |               ^^^^^^^^^^^^^^^^
+
+error: Unknown flag
+  --> tests/ui/bad_apply.rs:17:16
+   |
+17 |         apply(+nop, "one"),
+   |                ^^^
+
+error: Can not add and remove the same flag
+  --> tests/ui/bad_apply.rs:20:51
+   |
+20 |         apply(+case_insensitive, -case_insensitive, "one"),
+   |                                                   ^
+
+error: Can not add and remove the same flag
+  --> tests/ui/bad_apply.rs:23:51
+   |
+23 |         apply(-case_insensitive, +case_insensitive, "one"),
+   |                                                   ^
+
+error: unexpected end of input, Can not apply on two regular expressions
+  --> tests/ui/bad_apply.rs:26:46
+   |
+26 |         apply(+case_insensitive, "one", "two"),
+   |                                              ^

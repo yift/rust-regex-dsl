@@ -84,6 +84,10 @@ impl Dsl {
             need_group: false,
         }
     }
+
+    pub fn regex(&self) -> &str {
+        &self.regex
+    }
 }
 
 impl Parse for Dsl {

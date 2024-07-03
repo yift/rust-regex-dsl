@@ -1,5 +1,6 @@
 pub mod any;
 pub mod any_of;
+pub mod apply;
 pub mod capture_group;
 pub mod concat;
 pub mod eq;
