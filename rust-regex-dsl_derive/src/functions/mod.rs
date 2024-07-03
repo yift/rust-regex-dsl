@@ -5,5 +5,7 @@ pub mod concat;
 pub mod eq;
 mod parse_ident;
 pub mod parse_list;
+mod quantifier_type;
 pub mod regex;
+pub mod repeat;
 pub mod times;

@@ -6,10 +6,9 @@ use syn::{
 
 use crate::{dsl::Dsl, functions::parse_list::parse_list};
 
-use super::parse_ident;
+use super::{parse_ident::parse_ident, quantifier_type::QuantifierType};
 enum Element {
-    Greedy,
-    Lazy,
+    QuantifierType(QuantifierType),
     AtMost(usize),
     AtLeast(usize),
     Exactly(usize),
@@ -25,15 +24,13 @@ fn read_colon_num(input: &ParseBuffer) -> Result<usize> {
 }
 impl Parse for Element {
     fn parse(input: &ParseBuffer) -> Result<Self> {
-        if parse_ident::parse_ident(input, "greedy")? {
-            Ok(Element::Greedy)
-        } else if parse_ident::parse_ident(input, "lazy")? {
-            Ok(Element::Lazy)
-        } else if parse_ident::parse_ident(input, "exactly")? {
+        if let Some(qt) = QuantifierType::parse(input)? {
+            Ok(Element::QuantifierType(qt))
+        } else if parse_ident(input, "exactly")? {
             Ok(Element::Exactly(read_colon_num(input)?))
-        } else if parse_ident::parse_ident(input, "at_least")? {
+        } else if parse_ident(input, "at_least")? {
             Ok(Element::AtLeast(read_colon_num(input)?))
-        } else if parse_ident::parse_ident(input, "at_most")? {
+        } else if parse_ident(input, "at_most")? {
             Ok(Element::AtMost(read_colon_num(input)?))
         } else {
             Ok(Element::Dsl(input.parse()?))
@@ -41,7 +38,7 @@ impl Parse for Element {
     }
 }
 struct Times {
-    quantifier_type: String,
+    quantifier_type: QuantifierType,
     times: String,
     dsl: Dsl,
 }
@@ -51,7 +48,7 @@ impl Times {
             "{}{}{}",
             self.dsl.non_capturing_group_if_needed(),
             self.times,
-            self.quantifier_type,
+            self.quantifier_type.postfix(),
         );
         Dsl::new(&regex, false)
     }
@@ -86,17 +83,11 @@ impl Parse for Times {
                     }
                     exactly = Some(num);
                 }
-                Element::Greedy => {
+                Element::QuantifierType(qt) => {
                     if quantifier_type.is_some() {
                         return Err(input.error("Can not set quantifier type twice"));
                     }
-                    quantifier_type = Some("");
-                }
-                Element::Lazy => {
-                    if quantifier_type.is_some() {
-                        return Err(input.error("Can not set quantifier type twice"));
-                    }
-                    quantifier_type = Some("+");
+                    quantifier_type = Some(qt);
                 }
                 Element::Dsl(regex) => {
                     if dsl.is_some() {
@@ -129,7 +120,7 @@ impl Parse for Times {
         } else {
             return Err(input.error("Must set either exactly, at_most and at_least or at_least"));
         };
-        let quantifier_type = quantifier_type.unwrap_or_default().to_string();
+        let quantifier_type = quantifier_type.unwrap_or_default();
         Ok(Self {
             quantifier_type,
             times,
