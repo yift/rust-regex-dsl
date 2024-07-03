@@ -1,7 +1,8 @@
 use dsl::Dsl;
 use error_factory::ErrorFactory;
+use functions::parse_list::parse_list_to_vec;
 use proc_macro::TokenStream;
-use syn::{parse_macro_input, punctuated::Punctuated, LitStr};
+use syn::{parse_macro_input, LitStr};
 mod dsl;
 mod error_factory;
 mod functions;
@@ -20,8 +21,7 @@ pub fn regex(input: TokenStream) -> TokenStream {
 }
 #[proc_macro]
 pub fn regex_dsl(input: TokenStream) -> TokenStream {
-    let args = parse_macro_input!(input with Punctuated::<Dsl, syn::Token![,]>::parse_terminated);
-    let dsls: Vec<_> = args.iter().collect();
+    let dsls: Vec<Dsl> = parse_macro_input!(input with parse_list_to_vec);
     let dsl = Dsl::concat(&dsls);
     let error_factory = ErrorFactory::new_root();
     dsl.build(error_factory).into()

@@ -1,0 +1,47 @@
+error: expected integer literal
+ --> tests/ui/bad_timesparser.rs:6:22
+  |
+6 |             exactly: 1.0,
+  |                      ^^^
+
+error: Exactly zero times is pointless
+  --> tests/ui/bad_timesparser.rs:14:23
+   |
+14 |             exactly: 0,
+   |                       ^
+
+error: Invalid number
+  --> tests/ui/bad_timesparser.rs:22:22
+   |
+22 |             exactly: -1,
+   |                      ^
+
+error: expected integer literal
+  --> tests/ui/bad_timesparser.rs:30:22
+   |
+30 |             exactly: "1",
+   |                      ^^^
+
+error: expected integer literal
+  --> tests/ui/bad_timesparser.rs:38:22
+   |
+38 |             exactly: "1",
+   |                      ^^^
+
+error: regex parse error:
+           (?:test){10,4}+
+                   ^^^^^^
+       error: invalid repetition count range, the start must be <= the end
+  --> tests/ui/bad_timesparser.rs:44:17
+   |
+44 |       let regex = regex_dsl! {
+   |  _________________^
+45 | |         times{
+46 | |             at_least: 10,
+47 | |             at_most: 4,
+...  |
+50 | |         },
+51 | |     };
+   | |_____^
+   |
+   = note: this error originates in the macro `regex_dsl` (in Nightly builds, run with -Z macro-backtrace for more info)

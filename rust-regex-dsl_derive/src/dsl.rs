@@ -60,7 +60,7 @@ impl Dsl {
         }
     }
 
-    pub fn concat(dsls: &[&Dsl]) -> Self {
+    pub fn concat(dsls: &[Dsl]) -> Self {
         let need_group = match dsls.len() {
             0 => false,
             1 => dsls[0].need_group,

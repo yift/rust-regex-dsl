@@ -1,7 +1,6 @@
 use itertools::Itertools;
 use syn::parse::Parse;
 use syn::parse::ParseStream;
-use syn::punctuated::Punctuated;
 use syn::token::Colon;
 use syn::token::Comma;
 use syn::LitChar;
@@ -9,6 +8,7 @@ use syn::LitStr;
 use syn::{Error, Ident, Result, Token};
 
 use crate::dsl::Dsl;
+use crate::functions::parse_list::parse_list_to_vec;
 use crate::group::parse_group;
 use crate::ident_parser::parse_single_word;
 use crate::predefined_class::PredefineClass;
@@ -104,8 +104,7 @@ impl UserClass {
 
 impl Parse for UserClassInternal {
     fn parse(input: ParseStream) -> Result<Self> {
-        let items: Punctuated<UserClassElement, syn::Token![,]> =
-            Punctuated::parse_terminated(input)?;
+        let items: Vec<UserClassElement> = parse_list_to_vec(input)?;
         if items.is_empty() {
             return Err(input.error("Empty class is not supported"));
         }

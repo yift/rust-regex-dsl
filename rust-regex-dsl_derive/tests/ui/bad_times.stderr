@@ -1,0 +1,89 @@
+error: Unknown word: times
+ --> tests/ui/bad_times.rs:5:9
+  |
+5 |         times,
+  |         ^^^^^
+
+error: unexpected end of input, Nothing to repeat
+ --> tests/ui/bad_times.rs:9:15
+  |
+9 |         times(),
+  |               ^
+
+error: unexpected end of input, Must set either exactly, at_most and at_least or at_least
+  --> tests/ui/bad_times.rs:13:23
+   |
+13 |         times{ "test" },
+   |                       ^
+
+error: Can not set exactly twice
+  --> tests/ui/bad_times.rs:18:24
+   |
+18 |             exactly: 12,
+   |                        ^
+
+error: unexpected end of input, Can not set exactly and at least together
+  --> tests/ui/bad_times.rs:28:9
+   |
+28 |         },
+   |         ^
+
+error: unexpected end of input, Can not set exactly and at most together
+  --> tests/ui/bad_times.rs:36:9
+   |
+36 |         },
+   |         ^
+
+error: Can not set at most twice
+  --> tests/ui/bad_times.rs:42:24
+   |
+42 |             at_most: 12,
+   |                        ^
+
+error: Can not set at least twice
+  --> tests/ui/bad_times.rs:50:25
+   |
+50 |             at_least: 12,
+   |                         ^
+
+error: unexpected end of input, Can not repeat two things
+  --> tests/ui/bad_times.rs:61:9
+   |
+61 |         },
+   |         ^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_times.rs:68:19
+   |
+68 |             greedy,
+   |                   ^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_times.rs:77:17
+   |
+77 |             lazy,
+   |                 ^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_times.rs:86:19
+   |
+86 |             greedy,
+   |                   ^
+
+error: Can not set quantifier type twice
+  --> tests/ui/bad_times.rs:95:17
+   |
+95 |             lazy,
+   |                 ^
+
+error: unexpected end of input, Nothing to repeat
+   --> tests/ui/bad_times.rs:104:9
+    |
+104 |         },
+    |         ^
+
+error: unexpected end of input, At most without at least is not supported
+   --> tests/ui/bad_times.rs:111:9
+    |
+111 |         },
+    |         ^
