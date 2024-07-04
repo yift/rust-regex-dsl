@@ -82,7 +82,7 @@ impl CreateCapture {
             .enumerate()
             .filter_map(|(i, cap)| cap.map(|c| (i, c)))
             .map(|(i, name)| {
-                let name = format_ident!("{}", name);
+                let name = format_ident!("{}", name.to_case(Case::Snake));
                 let i = Index::from(i);
                 quote! {
                     pub fn #name(&self) -> Option<&'h str> {
