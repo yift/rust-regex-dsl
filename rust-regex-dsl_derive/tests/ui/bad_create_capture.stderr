@@ -1,0 +1,80 @@
+error: unexpected end of input, expected identifier
+ --> tests/ui/bad_create_capture.rs:4:17
+  |
+4 |       let regex = create_capture! {
+  |  _________________^
+5 | |     };
+  | |_____^
+  |
+  = note: this error originates in the macro `create_capture` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: expected identifier
+ --> tests/ui/bad_create_capture.rs:8:9
+  |
+8 |         "test",
+  |         ^^^^^^
+
+error: unexpected end of input, Nothing to capture
+  --> tests/ui/bad_create_capture.rs:12:17
+   |
+12 |       let regex = create_capture! {
+   |  _________________^
+13 | |         Test,
+14 | |     };
+   | |_____^
+   |
+   = note: this error originates in the macro `create_capture` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: expected one of: string literal, character literal, identifier, `#`, `~`
+  --> tests/ui/bad_create_capture.rs:18:9
+   |
+18 |         1,
+   |         ^
+
+error: unexpected token
+  --> tests/ui/bad_create_capture.rs:23:12
+   |
+23 |         "[",
+   |            ^
+
+error: regex parse error:
+           [
+           ^
+       error: unclosed character class
+  --> tests/ui/bad_create_capture.rs:28:15
+   |
+28 |         regex("["),
+   |               ^^^
+
+error: unexpected token
+  --> tests/ui/bad_create_capture.rs:33:12
+   |
+33 |         "[",
+   |            ^
+
+error: Unknown function: nop
+  --> tests/ui/bad_create_capture.rs:38:9
+   |
+38 |         nop("[a-z]+"),
+   |         ^^^
+
+error: The name get_capture in not supported
+  --> tests/ui/bad_create_capture.rs:41:17
+   |
+41 |       let regex = create_capture! {
+   |  _________________^
+42 | |         Test,
+43 | |         regex("(?<get_capture>[a-z]+)"),
+44 | |     };
+   | |_____^
+   |
+   = note: this error originates in the macro `create_capture` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: regex parse error:
+           (?<one>[a-z]+)(?<one>[a-z]+)
+              ^^^           ^^^
+       error: duplicate capture group name
+  --> tests/ui/bad_create_capture.rs:48:15
+   |
+48 |         regex("(?<one>[a-z]+)(?<one>[a-z]+)"),
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

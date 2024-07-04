@@ -48,6 +48,13 @@ impl CreateCapture {
                 return error_factory.error(format!("Invalid regular expression: {}", e));
             }
         };
+        if regex
+            .capture_names()
+            .flatten()
+            .any(|nm| nm == "get_capture")
+        {
+            return error_factory.error("The name get_capture in not supported".to_string());
+        }
         let struct_name = format_ident!("{}", self.struct_name);
         let names = regex.capture_names();
         let len = names.len();
