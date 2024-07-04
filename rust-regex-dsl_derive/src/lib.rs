@@ -643,6 +643,7 @@ pub fn regex(input: TokenStream) -> TokenStream {
 /// * `multi_line` - When the flag is set, `beginning_of_line` and end_of_line match begin/end of line and not input - equivalent to the `m` flag.
 /// * `allow_dot` - When the flag is set, allow `any_character` to match a new line - equivalent to the `s` flag.
 /// * `enables_crlf_mode` - When `multi_line` flag is set, `\r\n` is used - - equivalent to the `R` flag.
+/// 
 /// To set a flag, use: `+<flag>`, to unset it, use: `-<flag>`.
 /// One can apply flags on a specific DSL, by adding the DSL as an argument to the apply function - for example:
 /// ```rust
@@ -690,7 +691,7 @@ pub fn regex_dsl(input: TokenStream) -> TokenStream {
 /// This macro will create an helper struct for capture regular expression groups for a hard coded regular expression.
 ///
 /// The macro has two arguments, the first one should be the name of the struct to create and the second one is the regular expression,
-/// either as raw regular expression or as a DSL (See [regex_dsl] for syntax).
+/// either as raw regular expression or as a DSL (See [regex_dsl!] for syntax).
 ///
 /// The struct will be a tuple with the first filed as a `&str` with the entire capture text (i.e. capture group 0) and the rest will be
 /// `Option<&str>` with the content of the capture group (for any capture group in the regular expression). That is, for `[a-z]+` the struct will have
