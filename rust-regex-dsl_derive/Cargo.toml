@@ -9,8 +9,6 @@ proc-macro = true
 [dependencies]
 regex = "1.10"
 quote = "1.0"
-#litrs = "0.4"
-#thiserror = "1.0"
 itertools = "0.13"
 lazy_static = "1.5"
 convert_case = "0.6"
