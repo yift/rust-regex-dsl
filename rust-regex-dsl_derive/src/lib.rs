@@ -13,6 +13,8 @@ mod ident_parser;
 mod predefined_class;
 mod user_class;
 
+
+
 /// A simple regular expression macro.
 ///
 /// This macro will validate the regular expression and will produce a compile time error if the expression
@@ -643,7 +645,7 @@ pub fn regex(input: TokenStream) -> TokenStream {
 /// * `multi_line` - When the flag is set, `beginning_of_line` and end_of_line match begin/end of line and not input - equivalent to the `m` flag.
 /// * `allow_dot` - When the flag is set, allow `any_character` to match a new line - equivalent to the `s` flag.
 /// * `enables_crlf_mode` - When `multi_line` flag is set, `\r\n` is used - - equivalent to the `R` flag.
-/// 
+///
 /// To set a flag, use: `+<flag>`, to unset it, use: `-<flag>`.
 /// One can apply flags on a specific DSL, by adding the DSL as an argument to the apply function - for example:
 /// ```rust
