@@ -1,0 +1,42 @@
+name: Rust
+
+on:
+  push:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Run check on derive
+      run: cd rust-regex-dsl_derive && cargo check --all-targets
+    - name: Build derive
+      run: cd rust-regex-dsl_derive && cargo build
+    - name: test derive
+      run: cd rust-regex-dsl_derive && cargo test
+    - name: Format derive
+      run: cd rust-regex-dsl_derive && cargo fmt --all --check
+    - name: Clippy derive
+      run: cd rust-regex-dsl_derive && cargo clippy --all-targets --all-features -- -D warnings
+    - name: Run check on root
+      run: cargo check --all-targets
+    - name: Build root
+      run: cargo build
+    - name: test root
+      run: cargo test
+    - name: Format root
+      run: cargo fmt --all --check
+    - name: Clippy root
+      run: cargo clippy --all-targets --all-features -- -D warnings
+    - name: Build docs
+      run: cargo doc
+    - name: Build email examples
+      run: cargo run --example email
+    - name: Build ips examples
+      run: cargo run --example ips
+
+  
