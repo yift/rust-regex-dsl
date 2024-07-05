@@ -11,7 +11,12 @@ exclude = ["/.github/*", "/.gitignore"]
 repository = "https://github.com/yift/rust-regex-dsl"
 readme = "README.md"
 
+[workspace]
+members = [
+  "rust-regex-dsl_derive",
+]
+
 [dependencies]
 lazy_static = "1.5"
 regex = "1.10"
-rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive"}
+rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive", version = "0.1.0"}

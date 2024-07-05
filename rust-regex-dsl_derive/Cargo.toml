@@ -2,6 +2,13 @@
 name = "rust-regex-dsl_derive"
 version = "0.1.0"
 edition = "2021"
+authors = ["Yiftach Kaplan <me@ykaplan.me>"]
+license = "MIT"
+description = "Regular expression DSL derive macros."
+keywords = ["regex", "dsl", "derive"]
+categories = ["regex"]
+repository = "https://github.com/yift/rust-regex-dsl"
+readme = "../README.md"
 
 [lib]
 proc-macro = true
