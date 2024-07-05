@@ -96,3 +96,12 @@ fn none_group() {
     assert_eq!(three[2].2, None);
     assert_eq!(three[3].2, Some("33"));
 }
+#[test]
+fn get_regex() {
+    create_capture!(MyRegexCapture, "[a-z]+");
+
+    let regex = MyRegexCapture::regex();
+
+    assert!(regex.is_match("test"));
+    assert!(!regex.is_match("TEST"));
+}

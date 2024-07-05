@@ -115,6 +115,11 @@ impl CreateCapture {
                 #regex_name.captures_iter(haystack).map(Self::new)
             }
         };
+        let get_regex = quote! {
+            pub fn regex() -> &'static rust_regex_dsl::Regex {
+                &*#regex_name
+            }
+        };
         let impl_getters = quote! {
             impl <'h> #struct_name<'h> {
                 #new
@@ -122,6 +127,7 @@ impl CreateCapture {
                 #(#get_names)*
                 #capture
                 #capture_all
+                #get_regex
             }
         };
         quote! {

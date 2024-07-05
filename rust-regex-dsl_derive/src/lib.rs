@@ -698,8 +698,10 @@ pub fn regex_dsl(input: TokenStream) -> TokenStream {
 /// only `(&str)` and for `([a-z]+)([0-9]+)([a-z]+)` the struct will have `(&str, Option<&str>, Option<&str>, Option<&str>)`. If the regular expression has any named
 /// capture groups, the struct will have a public function to retrieve them with the same name as the group name (snake case). The struct will have a `get_capture` method that will return the first member of the tuple.
 ///
-/// The struct will have two static public functions: `catch` that accept a string reference and return an Option with the struct if it matches the argument and
-/// `catch_all` that accept a string reference and return an Iterator over all the places the expression was caught in the argument.
+/// The struct will have three static public functions:
+/// * `catch` that accept a string reference and return an Option with the struct if it matches the argument.
+/// * `catch_all` that accept a string reference and return an Iterator over all the places the expression was caught in the argument.
+/// * `regex` that return a reference to the regular expression.
 ///
 /// Please note, The capturing groups are optionals for regular expressions like: `([a-z]+)|([0-9]+)`.
 ///
