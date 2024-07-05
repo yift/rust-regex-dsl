@@ -26,4 +26,4 @@ To the `Cargo.toml` manifest. And use either one of the available macros.
 
 ## Example
 
-See [here](#example).
+See [here](/examples/).

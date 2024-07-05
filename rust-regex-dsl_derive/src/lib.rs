@@ -13,8 +13,6 @@ mod ident_parser;
 mod predefined_class;
 mod user_class;
 
-
-
 /// A simple regular expression macro.
 ///
 /// This macro will validate the regular expression and will produce a compile time error if the expression

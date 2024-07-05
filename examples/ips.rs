@@ -25,6 +25,5 @@ fn main() {
                 println!("Got IPv6: {}", ip);
             }
         }
-        
     }
 }

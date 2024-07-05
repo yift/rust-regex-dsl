@@ -48,8 +48,12 @@ fn main() {
     let stdin = std::io::stdin();
     for line in stdin.lock().lines() {
         for email in Email::catch_all(&line.unwrap()) {
-            println!("Got email: {} - user: {}, host: {}", email.0, email.user_name().unwrap(), email.host().unwrap());
+            println!(
+                "Got email: {} - user: {}, host: {}",
+                email.0,
+                email.user_name().unwrap(),
+                email.host().unwrap()
+            );
         }
-        
     }
 }
