@@ -1,3 +1,5 @@
+//! Use the [rust-regex-dsl](https://github.com/yift/rust-regex-dsl/) package.
+
 use create_capture::CreateCapture;
 use dsl::Dsl;
 use error_factory::ErrorFactory;
