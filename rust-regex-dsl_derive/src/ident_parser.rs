@@ -52,7 +52,7 @@ pub fn parse_single_word(ident: Ident) -> Result<Dsl> {
         "word_character" => "\\w",
         "not_word_character" => "\\W",
         "beginning_of_line" => "^",
-        "end_Of_line" => "$",
+        "end_of_line" => "$",
         "word_boundary" => "\\b",
         "not_word_boundary" => "\\B",
         "beginning_of_input" => "\\A",
