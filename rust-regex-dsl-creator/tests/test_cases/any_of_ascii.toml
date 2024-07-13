@@ -1,0 +1,4 @@
+name = "any_of_ascii"
+regex = "[[:alnum:]]"
+should_pass = ["1", "f"]
+should_fail = ["-", " "]

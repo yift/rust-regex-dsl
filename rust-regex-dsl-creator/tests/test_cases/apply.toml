@@ -1,0 +1,4 @@
+name = "apply"
+regex = "(?i)a(?-i)b(?i:c)d"
+should_pass = ["Abcd", "abcd", "AbCd"]
+should_fail = ["aBcd", "abcD"]

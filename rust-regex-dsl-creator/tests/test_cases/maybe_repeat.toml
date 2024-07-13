@@ -1,0 +1,4 @@
+name = "maybe_repeat"
+regex = "\\|\\d*\\|"
+should_pass = ["||", "|1|", "|12345|"]
+should_fail = ["|a|", "123|", "|123"]

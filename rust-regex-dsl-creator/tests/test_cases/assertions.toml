@@ -1,0 +1,4 @@
+name = "assertions"
+regex = "\\A^\\b{start}hell\\Bo\\b world$\\z"
+should_pass = ["hello world"]
+should_fail = [" hello world", "hello world "]

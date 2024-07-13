@@ -1,6 +1,6 @@
 [package]
 name = "rust-regex-dsl"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Yiftach Kaplan <me@ykaplan.me>"]
 license = "MIT"
@@ -12,7 +12,7 @@ repository = "https://github.com/yift/rust-regex-dsl"
 readme = "README.md"
 
 [workspace]
-members = [
+members = [ "rust-regex-dsl-creator",
   "rust-regex-dsl_derive",
 ]
 

@@ -1,0 +1,4 @@
+name = "any_of_unicode_perl"
+regex = "[\\d\\p{letter}]"
+should_pass = ["1", "f"]
+should_fail = ["-", " "]

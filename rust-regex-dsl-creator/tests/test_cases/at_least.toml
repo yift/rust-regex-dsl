@@ -1,0 +1,4 @@
+name = "at_least"
+regex = "-(ABC){2,}-"
+should_pass = ["-ABCABCABC-", "-ABCABC-", "-ABCABCABCABC-"]
+should_fail = ["ABCABCABC", "-ABC-"]

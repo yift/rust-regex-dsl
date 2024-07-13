@@ -1,0 +1,4 @@
+name = "subtraction"
+regex = "[0-9--4]"
+should_pass = ["0", "3", "5"]
+should_fail = ["a", "4"]

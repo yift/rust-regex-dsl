@@ -1,0 +1,4 @@
+name = "bounded"
+regex = "T\\d{2,5}T"
+should_pass = ["T12T", "T123T", "T1234T", "T12345T"]
+should_fail = ["T1T", "T123456T"]

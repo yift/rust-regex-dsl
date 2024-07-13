@@ -1,0 +1,4 @@
+name = "unsupported_predefine_class"
+regex = "1\\p{General_Category=Letter}2"
+should_pass = ["1a2", "1α2"]
+should_fail = ["122", "1 2"]

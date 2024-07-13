@@ -1,0 +1,4 @@
+name = "simple_concat"
+regex = "abc.d"
+should_pass = ["abc1d", "abc-d"]
+should_fail = ["abcd", "abc3"]

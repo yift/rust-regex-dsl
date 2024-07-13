@@ -1,0 +1,4 @@
+name = "not_any_of_literals"
+regex = "[^abc]"
+should_pass = ["e", "f"]
+should_fail = ["a", "b", "c"]

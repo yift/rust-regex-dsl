@@ -1,0 +1,4 @@
+name = "simple_literal"
+regex = "A"
+should_pass = ["A"]
+should_fail = ["a", "b", "B"]

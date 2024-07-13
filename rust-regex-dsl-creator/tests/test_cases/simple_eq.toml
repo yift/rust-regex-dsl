@@ -1,0 +1,4 @@
+name = "simple_eq"
+regex = "abcd"
+should_pass = ["abcd"]
+should_fail = ["abc", "bcd", "aabc"]
