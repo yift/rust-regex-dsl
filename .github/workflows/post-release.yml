@@ -1,4 +1,4 @@
-name: Rust
+name: Post release
 
 on:
   push:
@@ -15,67 +15,11 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-      - name: Get current version
-        uses: SebRollen/toml-action@v1.2.0
-        id: current-version
-        with:
-          file: 'Cargo.toml'
-          field: 'package.version'
-      - name: Tag main
-        env:
-          VERSION: ${{ steps.current-version.outputs.VERSION }}
-        run: |
-          git tag "v$VERSION"
-      - name: Merge to dev
-        run: |
-          git checkout dev
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "Jawk post release bot"
-          git merge origin/main
-      - name: Bump version
-        id: new-version
-        env:
-          VERSION: ${{ steps.current-version.outputs.VERSION }}
-        run: |
-          echo "NEW_VERSION=$(echo $VERSION | awk -F. '/[0-9]+\./{$NF++;print}' OFS=.)" >> "$GITHUB_OUTPUT"
-      - name: Update version in main Cargo.toml
-        uses: sandstromviktor/toml-editor@2.0.0
-        with:
-          file: "Cargo.toml"
-          key: "package.version"
-          value: ${{ steps.new-version.outputs.NEW_VERSION }}
-      - name: Update version in derive Cargo.toml
-        uses: sandstromviktor/toml-editor@2.0.0
-        with:
-          file: "rust-regex-dsl_derive/Cargo.toml"
-          key: "package.version"
-          value: ${{ steps.new-version.outputs.NEW_VERSION }}
-      - name: Update version in creator Cargo.toml
-        uses: sandstromviktor/toml-editor@2.0.0
-        with:
-          file: "rust-regex-dsl-creator/Cargo.toml"
-          key: "package.version"
-          value: ${{ steps.new-version.outputs.NEW_VERSION }}
-      - name: Update creator version in main Cargo.toml
-        uses: sandstromviktor/toml-editor@2.0.0
-        with:
-          file: "Cargo.toml"
-          key: "dependencies.rust-regex-dsl-creator.version"
-          value: ${{ steps.new-version.outputs.NEW_VERSION }}
-      - name: Update dsl_derive version in main Cargo.toml
-        uses: sandstromviktor/toml-editor@2.0.0
-        with:
-          file: "Cargo.toml"
-          key: "dependencies.rust-regex-dsl_derive.version"
-          value: ${{ steps.new-version.outputs.NEW_VERSION }}
-      - name: Commit
-        env:
-          NEW_VERSION: ${{ steps.new-version.outputs.NEW_VERSION }}
+      - name: Post release
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "Jawk post release bot"
-          git add ./Cargo.toml ./rust-regex-dsl-creator/Cargo.toml ./rust-regex-dsl_derive/Cargo.toml
-          git commit -m "$NEW_VERSION"
+          ./scripts/post_release.sh
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
@@ -87,5 +31,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
-          title: "${{ steps.new-version.outputs.NEW_VERSION }}"
           branch: dev
