@@ -8,7 +8,7 @@
 //! rust-regex-dsl = "0.1"
 //! ```
 //! To your `Cargo.toml` manifest.
-//! 
+//!
 //! To build a DSL from a regular expression, see [rust-regex-dsl-creator](https://crates.io/crates/rust-regex-dsl-creator).
 
 #[doc(hidden)]
