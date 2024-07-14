@@ -21,7 +21,7 @@ jobs:
       - name: Get current version
         id: current-version
         run: |
-          echo "VERSION=$(cargo metadata --no-deps --format-version=1 | jawk --split-by .packages | jawk -c .version -o text)" >> "$GITHUB_OUTPUT"
+          echo "VERSION=$(cargo metadata --no-deps --format-version=1 | jawk --split-by .packages| jawk -c .version -o text --where '(= .name "rust-regex-dsl")')" >> "$GITHUB_OUTPUT"
       - name: Tag main
         env:
           VERSION: ${{ steps.current-version.outputs.VERSION }}
