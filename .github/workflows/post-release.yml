@@ -43,34 +43,34 @@ jobs:
         with:
           file: "Cargo.toml"
           key: "package.version"
-          value: ${{ steps.new-version.outputs.VERSION }}
+          value: ${{ steps.new-version.outputs.NEW_VERSION }}
       - name: Update version in derive Cargo.toml
         uses: sandstromviktor/toml-editor@2.0.0
         with:
           file: "rust-regex-dsl_derive/Cargo.toml"
           key: "package.version"
-          value: ${{ steps.new-version.outputs.VERSION }}
+          value: ${{ steps.new-version.outputs.NEW_VERSION }}
       - name: Update version in creator Cargo.toml
         uses: sandstromviktor/toml-editor@2.0.0
         with:
           file: "rust-regex-dsl-creator/Cargo.toml"
           key: "package.version"
-          value: ${{ steps.new-version.outputs.VERSION }}
+          value: ${{ steps.new-version.outputs.NEW_VERSION }}
       - name: Update creator version in main Cargo.toml
         uses: sandstromviktor/toml-editor@2.0.0
         with:
           file: "Cargo.toml"
           key: "dependencies.rust-regex-dsl-creator.version"
-          value: ${{ steps.new-version.outputs.VERSION }}
+          value: ${{ steps.new-version.outputs.NEW_VERSION }}
       - name: Update dsl_derive version in main Cargo.toml
         uses: sandstromviktor/toml-editor@2.0.0
         with:
           file: "Cargo.toml"
           key: "dependencies.rust-regex-dsl_derive.version"
-          value: ${{ steps.new-version.outputs.VERSION }}
+          value: ${{ steps.new-version.outputs.NEW_VERSION }}
       - name: Commit
         env:
-          NEW_VERSION: ${{ steps.new-version.outputs.VERSION }}
+          NEW_VERSION: ${{ steps.new-version.outputs.NEW_VERSION }}
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "Jawk post release bot"
@@ -87,5 +87,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
-          title: "${{ steps.new-version.outputs.VERSION }}"
+          title: "${{ steps.new-version.outputs.NEW_VERSION }}"
           branch: dev
