@@ -1,12 +1,12 @@
 use crate::ast_impl::Builder;
 use crate::printer::Printer;
-use crate::CreatorError;
 use crate::ToDsl;
+use regex::Error;
 use regex::Regex;
 use regex_syntax::ast::parse::Parser;
 
 impl<T: ToString> ToDsl for T {
-    fn to_dsl(&self) -> Result<String, CreatorError> {
+    fn to_dsl(&self) -> Result<String, Error> {
         let str = self.to_string();
         Regex::new(&str)?;
         let mut parser = Parser::new();
