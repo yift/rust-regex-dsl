@@ -80,7 +80,7 @@ fn test_beginning_and_end_of_line() {
     let regex = regex_dsl! {
         beginning_of_line,
         "test",
-        end_Of_line,
+        end_of_line,
     };
     assert!(regex.is_match("test"));
     assert!(!regex.is_match("Atest"));

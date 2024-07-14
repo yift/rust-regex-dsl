@@ -1,0 +1,4 @@
+name = "non_capture_group"
+regex = "((?:\\d+)(?:\\p{letter}+))"
+should_pass = ["123abc", "1def", "23frd"]
+should_fail = ["123", "abc"]

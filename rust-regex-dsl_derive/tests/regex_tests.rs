@@ -1,4 +1,4 @@
-pub use rust_regex_dsl::regex;
+use rust_regex_dsl::regex;
 
 #[test]
 fn it_works() {

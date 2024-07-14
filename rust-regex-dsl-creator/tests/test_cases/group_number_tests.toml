@@ -1,0 +1,5 @@
+name = "group_number_test"
+regex = "((\\d+)(\\p{letter}+))"
+should_pass = ["123abc", "1def", "23frd"]
+should_fail = ["123", "abc"]
+groups = [ {haystack= "123abc", expected_groups=[{name_or_index="1", expected_value="123abc"}, {name_or_index="2", expected_value="123"}, {name_or_index="3", expected_value="abc"}]}]

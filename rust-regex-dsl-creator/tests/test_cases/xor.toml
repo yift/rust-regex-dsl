@@ -1,0 +1,4 @@
+name = "xor"
+regex = "[0-4~~3-6]"
+should_pass = ["0", "1", "2", "5", "6"]
+should_fail = ["3", "4", "7"]

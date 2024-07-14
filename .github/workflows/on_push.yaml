@@ -22,6 +22,8 @@ jobs:
       run: cd rust-regex-dsl_derive && cargo fmt --all --check
     - name: Clippy derive
       run: cd rust-regex-dsl_derive && cargo clippy --all-targets --all-features -- -D warnings
+    - name: Publish (dry run)
+      run: cd rust-regex-dsl_derive && cargo publish --dry-run
     - name: Run check on root
       run: cargo check --all-targets
     - name: Build root
@@ -33,10 +35,23 @@ jobs:
     - name: Clippy root
       run: cargo clippy --all-targets --all-features -- -D warnings
     - name: Build docs
-      run: cargo doc
+      run: cargo doc --all-features
     - name: Build email examples
       run: cargo run --example email
     - name: Build ips examples
       run: cargo run --example ips
+    - uses: actions/checkout@master
+    - name: Run check on creator
+      run: cd rust-regex-dsl-creator && cargo check --all-targets
+    - name: Build creator
+      run: cd rust-regex-dsl-creator && cargo build
+    - name: test creator
+      run: cd rust-regex-dsl-creator && cargo test
+    - name: Format creator
+      run: cd rust-regex-dsl-creator && cargo fmt --all --check
+    - name: Clippy creator
+      run: cd rust-regex-dsl-creator && cargo clippy --all-targets --all-features -- -D warnings
+    - name: Publish (dry run)
+      run: cd rust-regex-dsl-creator && cargo publish --dry-run
 
   

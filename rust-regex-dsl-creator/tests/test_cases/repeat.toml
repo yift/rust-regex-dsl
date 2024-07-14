@@ -1,0 +1,4 @@
+name = "repeat"
+regex = "\\|\\d+\\|"
+should_pass = ["|123|", "|1|"]
+should_fail = ["|a|", "123|", "|123", "||"]

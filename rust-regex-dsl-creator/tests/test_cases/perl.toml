@@ -1,0 +1,4 @@
+name = "perls"
+regex = "\\d\\s\\w\\D\\S\\W"
+should_pass = ["1 aB- ", "5\tE = "]
+should_fail = ["a aB- ", "1+aB- ", "1 \tB- ", "1 a1- ", "1 aB  ", "1 aB-w"]

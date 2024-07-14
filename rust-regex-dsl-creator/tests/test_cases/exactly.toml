@@ -1,0 +1,4 @@
+name = "exactly"
+regex = "-(ABC){3}-"
+should_pass = ["-ABCABCABC-"]
+should_fail = ["ABCABCABC", "-ABCABC-", "-ABCABCABCABC-"]

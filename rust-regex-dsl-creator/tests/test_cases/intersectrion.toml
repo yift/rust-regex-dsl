@@ -1,0 +1,4 @@
+name = "intersection"
+regex = "[0-4&&3-6]"
+should_pass = ["3", "4"]
+should_fail = ["1", "2", "5", "7"]

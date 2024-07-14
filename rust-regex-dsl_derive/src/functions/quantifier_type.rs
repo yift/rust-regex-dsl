@@ -23,7 +23,7 @@ impl QuantifierType {
     pub fn postfix(&self) -> &str {
         match self {
             QuantifierType::Greedy => "",
-            QuantifierType::Lazy => "+",
+            QuantifierType::Lazy => "?",
         }
     }
 }

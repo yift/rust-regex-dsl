@@ -29,8 +29,8 @@ error: expected integer literal
    |                      ^^^
 
 error: regex parse error:
-           (?:test){10,4}+
-                   ^^^^^^
+           (?:test){10,4}?
+                   ^^^^^^^
        error: invalid repetition count range, the start must be <= the end
   --> tests/ui/bad_timesparser.rs:44:17
    |

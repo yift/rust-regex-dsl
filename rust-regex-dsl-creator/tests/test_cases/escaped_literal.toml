@@ -1,0 +1,4 @@
+name = "escaped_literals"
+regex = "\\n\\\\"
+should_pass = ["\n\\"]
+should_fail = ["a\\", "n\\", "\\\\", "\n-"]

@@ -1,0 +1,4 @@
+name = "range"
+regex = "[2-46-7]"
+should_pass = ["2", "3", "4", "6", "7"]
+should_fail = ["1", "5", "8"]

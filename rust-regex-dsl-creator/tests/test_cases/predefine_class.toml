@@ -1,0 +1,4 @@
+name = "predefine_class"
+regex = "\\pN\\p{letter}\\PN\\P{letter}"
+should_pass = ["1ab2", "5A  "]
+should_fail = ["aab2", "12b2", "1a22", "1aba"]

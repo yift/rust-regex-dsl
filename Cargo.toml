@@ -1,6 +1,6 @@
 [package]
 name = "rust-regex-dsl"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Yiftach Kaplan <me@ykaplan.me>"]
 license = "MIT"
@@ -11,12 +11,18 @@ exclude = ["/.github/*", "/.gitignore"]
 repository = "https://github.com/yift/rust-regex-dsl"
 readme = "README.md"
 
+
 [workspace]
-members = [
+members = [ "rust-regex-dsl-creator",
   "rust-regex-dsl_derive",
 ]
 
 [dependencies]
 lazy_static = "1.5"
 regex = "1.10"
-rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive", version = "0.1.0"}
+rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive", version = "0.1.1"}
+rust-regex-dsl-creator = { path = "./rust-regex-dsl-creator", version = "0.1.1", optional = true, default-features = false}
+
+[features]
+default = []
+creator = ["rust-regex-dsl-creator"]

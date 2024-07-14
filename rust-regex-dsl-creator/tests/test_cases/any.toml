@@ -1,0 +1,4 @@
+name = "any"
+regex = "bar|foo"
+should_pass = ["bar", "foo"]
+should_fail = ["baf", "boo"]
