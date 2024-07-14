@@ -43,13 +43,13 @@ jobs:
     - uses: actions/checkout@master
     - name: Run check on creator
       run: cd rust-regex-dsl-creator && cargo check --all-targets
-    - name: Build derive
+    - name: Build creator
       run: cd rust-regex-dsl-creator && cargo build
-    - name: test derive
+    - name: test creator
       run: cd rust-regex-dsl-creator && cargo test
-    - name: Format derive
+    - name: Format creator
       run: cd rust-regex-dsl-creator && cargo fmt --all --check
-    - name: Clippy derive
+    - name: Clippy creator
       run: cd rust-regex-dsl-creator && cargo clippy --all-targets --all-features -- -D warnings
     - name: Publish (dry run)
       run: cd rust-regex-dsl-creator && cargo publish --dry-run
