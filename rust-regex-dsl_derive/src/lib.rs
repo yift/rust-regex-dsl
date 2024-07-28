@@ -24,32 +24,26 @@ mod user_class;
 /// ```rust
 /// use rust_regex_dsl::regex;
 /// use regex::Regex;
-/// use lazy_static::lazy_static;
+/// use std::sync::LazyLock;
 ///
-/// lazy_static! {
-///     static ref VALID_NAME: Regex = regex!("[a-z][a-zA-Z_]*");
-/// }
+/// static VALID_NAME: LazyLock<Regex> = LazyLock::new(|| regex!("[a-z][a-zA-Z_]*"));
 /// ```
 /// Is equivalent to:
 /// ```rust
 /// use rust_regex_dsl::regex;
 /// use regex::Regex;
-/// use lazy_static::lazy_static;
+/// use std::sync::LazyLock;
 ///
-/// lazy_static! {
-///     static ref VALID_NAME: Regex = Regex::new("[a-z][a-zA-Z_]*").unwrap();
-/// }
+/// static VALID_NAME: LazyLock<Regex> = LazyLock::new(|| Regex::new("[a-z][a-zA-Z_]*").unwrap());
 /// ```
 ///
 /// But this:
 /// ```compile_fail
 /// use rust_regex_dsl::regex;
 /// use regex::Regex;
-/// use lazy_static::lazy_static;
 ///
-/// lazy_static! {
-///     static ref VALID_NAME: Regex = regex!("[a-z][a-zA-Z_*");
-/// }
+///
+/// static VALID_NAME: LazyLock<Regex> = LazyLock::new(|| regex!("[a-z][a-zA-Z_*"));
 /// ```
 /// will fail with compilation error (because of the missing closing square bracket) while using the same without the macro will fail in run time.
 #[proc_macro]

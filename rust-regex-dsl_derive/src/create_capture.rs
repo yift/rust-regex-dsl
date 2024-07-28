@@ -60,9 +60,7 @@ impl CreateCapture {
         let len = names.len();
         let regex_name = format_ident!("{}_REGEX", self.struct_name.to_case(Case::UpperSnake));
         let define_regex = quote! {
-            rust_regex_dsl::lazy_static! {
-                static ref #regex_name: rust_regex_dsl::Regex = rust_regex_dsl::Regex::new(#regex_str).unwrap();
-            }
+            static #regex_name: std::sync::LazyLock<rust_regex_dsl::Regex> = std::sync::LazyLock::new(|| rust_regex_dsl::Regex::new(#regex_str).unwrap());
         };
 
         let args: Vec<_> = (1..len).map(|_| quote! {, Option<&'h str>}).collect();
