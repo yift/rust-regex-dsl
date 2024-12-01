@@ -18,7 +18,7 @@ members = [ "rust-regex-dsl-creator",
 ]
 
 [dependencies]
-regex = "1.10"
+regex = "1.11"
 rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive", version = "0.1.9" }
 rust-regex-dsl-creator = { path = "./rust-regex-dsl-creator", version = "0.1.9", optional = true, default-features = false}
 

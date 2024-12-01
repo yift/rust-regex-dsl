@@ -14,7 +14,7 @@ readme = "../README.md"
 proc-macro = true
 
 [dependencies]
-regex = "1.10"
+regex = "1.11"
 quote = "1.0"
 itertools = "0.13"
 convert_case = "0.6"
