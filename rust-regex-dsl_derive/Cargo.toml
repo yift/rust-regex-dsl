@@ -1,6 +1,6 @@
 [package]
 name = "rust-regex-dsl_derive"
-version = "0.1.8"
+version = "0.1.9"
 edition = "2021"
 authors = ["Yiftach Kaplan <me@ykaplan.me>"]
 license = "MIT"
@@ -14,7 +14,7 @@ readme = "../README.md"
 proc-macro = true
 
 [dependencies]
-regex = "1.10"
+regex = "1.11"
 quote = "1.0"
 itertools = "0.13"
 convert_case = "0.6"

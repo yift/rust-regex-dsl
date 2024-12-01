@@ -1,6 +1,6 @@
 [package]
 name = "rust-regex-dsl-creator"
-version = "0.1.8"
+version = "0.1.9"
 edition = "2021"
 authors = ["Yiftach Kaplan <me@ykaplan.me>"]
 license = "MIT"
@@ -11,7 +11,7 @@ repository = "https://github.com/yift/rust-regex-dsl"
 readme = "../README.md"
 
 [dependencies]
-regex = "1.10"
+regex = "1.11"
 regex-syntax = "0.8"
 
 [dev-dependencies]
