@@ -11,7 +11,7 @@ repository = "https://github.com/yift/rust-regex-dsl"
 readme = "../README.md"
 
 [dependencies]
-regex = "1.10"
+regex = "1.11"
 regex-syntax = "0.8"
 
 [dev-dependencies]
