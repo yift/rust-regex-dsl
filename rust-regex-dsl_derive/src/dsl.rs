@@ -2,8 +2,8 @@ use proc_macro2::{Literal, TokenStream};
 use quote::quote;
 use regex::Regex;
 use syn::{
-    parse::{Parse, ParseStream},
     Error, Ident, LitChar, LitStr, Token,
+    parse::{Parse, ParseStream},
 };
 
 use crate::{

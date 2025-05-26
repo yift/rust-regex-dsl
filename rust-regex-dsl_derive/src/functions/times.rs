@@ -1,7 +1,7 @@
 use syn::{
+    Error, LitInt, Result,
     parse::{Parse, ParseBuffer, ParseStream},
     token::Colon,
-    Error, LitInt, Result,
 };
 
 use crate::{dsl::Dsl, functions::parse_list::parse_list};

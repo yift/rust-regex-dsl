@@ -1,7 +1,7 @@
 [package]
 name = "rust-regex-dsl"
-version = "0.1.8"
-edition = "2021"
+version = "0.1.9"
+edition = "2024"
 authors = ["Yiftach Kaplan <me@ykaplan.me>"]
 license = "MIT"
 description = "Regular expression DSL."
@@ -18,10 +18,14 @@ members = [ "rust-regex-dsl-creator",
 ]
 
 [dependencies]
-regex = "1.10"
-rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive", version = "0.1.8" }
-rust-regex-dsl-creator = { path = "./rust-regex-dsl-creator", version = "0.1.8", optional = true, default-features = false}
+regex = "1.11"
+rust-regex-dsl_derive = { path = "./rust-regex-dsl_derive", version = "0.1.9" }
+rust-regex-dsl-creator = { path = "./rust-regex-dsl-creator", version = "0.1.9", optional = true, default-features = false}
 
 [features]
 default = []
 creator = ["rust-regex-dsl-creator"]
+
+
+[workspace.metadata.typos]
+default.extend-ignore-re = ["Nd"]

@@ -1,4 +1,4 @@
-use syn::{parse::ParseBuffer, LitStr, Result};
+use syn::{LitStr, Result, parse::ParseBuffer};
 
 use crate::dsl::Dsl;
 

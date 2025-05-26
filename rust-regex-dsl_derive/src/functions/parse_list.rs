@@ -1,6 +1,6 @@
+use syn::Result;
 use syn::parse::{Parse, ParseStream};
 use syn::token::Comma;
-use syn::Result;
 
 pub fn parse_list<T: Parse>(
     input: ParseStream,

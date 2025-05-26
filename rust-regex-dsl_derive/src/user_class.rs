@@ -1,10 +1,10 @@
 use itertools::Itertools;
+use syn::LitChar;
+use syn::LitStr;
 use syn::parse::Parse;
 use syn::parse::ParseStream;
 use syn::token::Colon;
 use syn::token::Comma;
-use syn::LitChar;
-use syn::LitStr;
 use syn::{Error, Ident, Result, Token};
 
 use crate::dsl::Dsl;

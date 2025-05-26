@@ -1,7 +1,7 @@
 [package]
 name = "rust-regex-dsl_derive"
-version = "0.1.8"
-edition = "2021"
+version = "0.1.9"
+edition = "2024"
 authors = ["Yiftach Kaplan <me@ykaplan.me>"]
 license = "MIT"
 description = "Regular expression DSL derive macros."
@@ -14,10 +14,10 @@ readme = "../README.md"
 proc-macro = true
 
 [dependencies]
-regex = "1.10"
+regex = "1.11"
 quote = "1.0"
-itertools = "0.13"
-convert_case = "0.6"
+itertools = "0.14"
+convert_case = "0.8"
 syn = {version = "2.0", features = ["full"]}
 proc-macro2 = "1.0"
 

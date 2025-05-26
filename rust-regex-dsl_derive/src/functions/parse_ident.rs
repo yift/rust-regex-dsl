@@ -1,4 +1,4 @@
-use syn::{parse::ParseBuffer, Ident, Result};
+use syn::{Ident, Result, parse::ParseBuffer};
 
 pub fn parse_ident(group: &ParseBuffer, name: &str) -> Result<bool> {
     let lookahead = group.lookahead1();

@@ -1,4 +1,4 @@
-use syn::{parse::ParseBuffer, Result};
+use syn::{Result, parse::ParseBuffer};
 
 use crate::dsl::Dsl;
 

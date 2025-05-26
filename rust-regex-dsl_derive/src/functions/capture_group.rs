@@ -1,7 +1,7 @@
 use syn::{
+    Ident, Result,
     parse::ParseBuffer,
     token::{Colon, Comma},
-    Ident, Result,
 };
 
 use crate::dsl::Dsl;

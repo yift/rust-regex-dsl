@@ -1,6 +1,6 @@
+use crate::ToDsl;
 use crate::ast_impl::Builder;
 use crate::printer::Printer;
-use crate::ToDsl;
 use regex::Error;
 use regex::Regex;
 use regex_syntax::ast::parse::Parser;

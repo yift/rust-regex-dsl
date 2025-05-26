@@ -1,5 +1,5 @@
-use syn::parse::{Parse, ParseBuffer, ParseStream};
 use syn::Result;
+use syn::parse::{Parse, ParseBuffer, ParseStream};
 
 use crate::dsl::Dsl;
 
