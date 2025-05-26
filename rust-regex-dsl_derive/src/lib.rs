@@ -5,7 +5,7 @@ use dsl::Dsl;
 use error_factory::ErrorFactory;
 use functions::parse_list::parse_list_to_vec;
 use proc_macro::TokenStream;
-use syn::{parse_macro_input, LitStr};
+use syn::{LitStr, parse_macro_input};
 mod create_capture;
 mod dsl;
 mod error_factory;
@@ -280,7 +280,7 @@ pub fn regex(input: TokenStream) -> TokenStream {
 /// assert!(regex.is_match("a"));
 /// assert!(regex.is_match("r"));
 /// ```
-/// * A range of characters (from: 'a' to: 'z') - in that case, the class will include all the charactes in that range. For example:
+/// * A range of characters (from: 'a' to: 'z') - in that case, the class will include all the characters in that range. For example:
 /// ```rust
 /// use rust_regex_dsl::regex_dsl;
 ///

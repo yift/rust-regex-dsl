@@ -2,11 +2,11 @@ use std::collections::HashSet;
 
 use crate::dsl::Dsl;
 use itertools::Itertools;
+use syn::Result;
 use syn::parse::Parse;
 use syn::parse::ParseStream;
 use syn::token::Minus;
 use syn::token::Plus;
-use syn::Result;
 
 use super::parse_ident::parse_ident;
 use super::parse_list::parse_list;

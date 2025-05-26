@@ -1,6 +1,6 @@
 use crate::dsl::Dsl;
 use itertools::Itertools;
-use syn::{parse::ParseBuffer, Result};
+use syn::{Result, parse::ParseBuffer};
 
 use super::parse_list::parse_list_to_vec;
 

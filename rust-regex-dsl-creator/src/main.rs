@@ -1,7 +1,7 @@
 use rust_regex_dsl_creator::ToDsl;
-use std::io::stdin;
 use std::io::BufRead;
 use std::io::Error as IoError;
+use std::io::stdin;
 
 fn main() -> Result<(), IoError> {
     let stdin = stdin();

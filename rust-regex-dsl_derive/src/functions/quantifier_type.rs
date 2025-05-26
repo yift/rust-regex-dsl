@@ -1,5 +1,5 @@
-use syn::parse::ParseStream;
 use syn::Result;
+use syn::parse::ParseStream;
 
 use super::parse_ident::parse_ident;
 

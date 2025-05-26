@@ -1,6 +1,6 @@
 use syn::{
-    parse::{ParseBuffer, ParseStream},
     Error, Ident, Result,
+    parse::{ParseBuffer, ParseStream},
 };
 
 use crate::{
@@ -62,7 +62,7 @@ pub fn parse_single_word(ident: Ident) -> Result<Dsl> {
             return Err(Error::new(
                 ident.span(),
                 format!("Unknown word: {}", unknown_word),
-            ))
+            ));
         }
     };
     Ok(Dsl::new(regex, false))

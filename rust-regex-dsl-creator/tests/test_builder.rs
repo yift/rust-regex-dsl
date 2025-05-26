@@ -8,9 +8,9 @@ use std::io::Result;
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use tempdir::TempDir;
-use toml::map::Map;
 use toml::Table;
 use toml::Value;
+use toml::map::Map;
 
 #[derive(Debug, Deserialize, Serialize, Default)]
 struct Test {
