@@ -14,10 +14,10 @@ readme = "../README.md"
 proc-macro = true
 
 [dependencies]
-regex = "1.11"
+regex = "1.12"
 quote = "1.0"
 itertools = "0.14"
-convert_case = "0.8"
+convert_case = "0.11"
 syn = {version = "2.0", features = ["full"]}
 proc-macro2 = "1.0"
 

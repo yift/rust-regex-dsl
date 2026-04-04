@@ -11,12 +11,12 @@ repository = "https://github.com/yift/rust-regex-dsl"
 readme = "../README.md"
 
 [dependencies]
-regex = "1.11"
+regex = "1.12"
 regex-syntax = "0.8"
 
 [dev-dependencies]
 tempdir = "0.3"
-toml = "0.8"
+toml = "0.9"
 serde = { version = "1.0", features = ["derive"] }
 itertools = "0.14"
 
