@@ -1,0 +1,162 @@
+#!/bin/bash
+
+clear
+
+echo 'Building derive...'
+cd ./rust-regex-dsl_derive/
+
+
+echo '  Update...'
+cargo update > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Format...'
+cargo fmt > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Check...'
+cargo check --tests --all-features > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Build...'
+cargo build --all-targets --all-features > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Test...'
+INSTA_UPDATE=always CREATE_RESULTS=TRUE RUST_BACKTRACE=1 cargo test > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Clippy...'
+cargo clippy --all-targets --all-features -- -D warnings > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo 'OK'
+
+
+echo 'Building creator...'
+cd ../rust-regex-dsl-creator/
+
+echo '  Update...'
+cargo update > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Format...'
+cargo fmt > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Check...'
+cargo check --tests --all-features > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Build...'
+cargo build --all-targets --all-features > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Test...'
+INSTA_UPDATE=always CREATE_RESULTS=TRUE RUST_BACKTRACE=1 cargo test > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Clippy...'
+cargo clippy --all-targets --all-features -- -D warnings > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo 'OK'
+
+
+echo 'Building main...'
+cd ..
+
+echo '  Update...'
+cargo update > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Format...'
+cargo fmt > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Check...'
+cargo check --tests --all-features > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Build...'
+cargo build --all-targets --all-features > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Typos...'
+typos > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo '  Test...'
+INSTA_UPDATE=always CREATE_RESULTS=TRUE RUST_BACKTRACE=1 cargo test > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+
+echo '  Clippy...'
+cargo clippy --all-targets --all-features -- -D warnings > /tmp/out.txt 2>&1
+if [ $? -ne 0 ]; then
+    less /tmp/out.txt
+    exit -1
+fi
+
+echo 'OK'
